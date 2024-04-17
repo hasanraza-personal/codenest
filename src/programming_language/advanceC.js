@@ -278,6 +278,41 @@ const advanceC = [
     `,
   },
   {
+    topic: "Array of objects",
+    desc: `It is the collection of similar types of objects.`,
+    code: `#include <iostream>
+    using namespace std;
+    
+    class Student {
+      int id, marks;
+    
+    public:
+      void enterDetails() {
+        cout << "Enter id: ";
+        cin >> id;
+        cout << "Enter marks:";
+        cin >> marks;
+      }
+    
+      void displayDetails() {
+        cout << "Id is: " << id << endl;
+        cout << "Marks is: " << marks << endl;
+      }
+    };
+    
+    int main() {
+      Student s[2];
+    
+      f seor (int i = 0; i < 2; i++) {
+        s[i].enterDetails();
+      }
+    
+      for (int j = 0; j < 2; j++) {
+        s[j].displayDetails();
+      }
+    }`,
+  },
+  {
     topic: "Sort a set of strings in ascending alphabetical order",
     desc: "",
     code: `
