@@ -15,13 +15,16 @@ const AdvanceC = () => {
             <AccordionItem key={key} border="1px solid #E7E7E7" borderRadius="5px" mb="8px">
               <h2 style={{ borderBottom: "1px solid #E7E7E7" }}>
                 <AccordionButton>
+                  <div />
                   <Box as='span' flex='1' textAlign='left' fontWeight="bold">
                     {concept.topic}
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
-              <AccordionPanel pb={4}>{concept.desc}</AccordionPanel>
+              <AccordionPanel pb={4}>
+                <span dangerouslySetInnerHTML={{ __html: concept.desc }} />
+              </AccordionPanel>
               <AccordionPanel pb={4} className='copy-block-override'>
                 <CopyBlock
                   text={concept.code}

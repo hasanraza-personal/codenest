@@ -1,28 +1,130 @@
 const advanceC = [
   {
-    topic: "",
-    desc: "",
+    topic: "Class and Object",
+    desc: `
+    <b>Class</b>: It is a entire set of data and code of an object. The objects are variables of type class.<br />
+    <b>Object</b>: Basic runtime entity in OOP(Object Oriented Programming). It contains data and code to manipulate the data.
+    `,
     code: `#include <iostream>
-    #include <string>
     using namespace std;
     
     class MyClass {
     public:
-      int myNum;
-      string myString;
+      int x, y, z;
+      string str;
+    
+      void add() {
+        z = x + y;
+        cout << "Addition of X and Y is: " << x << endl;
+      }
+    
+      void sub() {
+        z = x - y;
+        cout << "Subtraction of X and Y is: ";
+        cout << z;
+      }
     };
     
     int main() {
-      MyClass myObj;
+      MyClass obj;
+      obj.add();
+      obj.sub();
     
-      myObj.myNum = 15;
-      myObj.myString = "Some text";
-    
-      cout << myObj.myNum << "\n";
-      cout << myObj.myString;
-    
-      return 0;
+      obj.str = "This is a example of Object and Class";
+      cout << "\n" << obj.str;
     }`,
+  },
+  {
+    topic: "Constructor and Destructor",
+    desc: `
+    Special menber function to initialize class object.<br />
+    Name is same as of class name.<br />
+    No return type.<br />
+    Invoked when object is created.<br /><br />
+
+    Types of Constructor:<br />
+    <b>Default Constructor</b><br />
+    <b>Parameterized Constructor</b><br />
+    <b>Copy Constructor</b><br /><br />
+
+    <b>Default Constructor</b><br />
+    It is a constructor with no arguments.<br /><br />
+
+    <b>Parameterized Constructor</b><br />
+    It is a constructor that takes some arguments.<br /><br />
+
+    <b>Copy Constructor</b><br />
+    It is a constructor that takes it's own class as a argument.<br /><br />
+    `,
+    code: `
+    // Default Constructor
+    #include <iostream>
+    using namespace std;
+
+    class Student {
+      int roll_no;
+      float marks;
+    
+    public:
+      Student() {
+        roll_no = 0;
+        marks = 0.00;
+        cout << "Roll no is " << roll_no << endl;
+        cout << "Marks is " << marks << endl;
+      }
+    };
+
+    int main() { 
+      Student s; 
+    } 
+
+
+    // Parameterized Constructor
+    #include <iostream>
+    using namespace std;
+
+    class Student {
+      int roll_no;
+      float marks;
+
+    public:
+      Student(int i, float j) {
+        roll_no = i;
+        marks = j;
+        cout << "Roll no is " << roll_no << endl;
+        cout << "Marks is " << marks << endl;
+      }
+    };
+
+    int main() { 
+      Student s(2, 50.0); 
+    }
+
+
+    // Copy Constructor
+    #include <iostream>
+    using namespace std;
+
+    class Student {
+      int roll_no;
+    
+    public:
+      Student(int i) {
+        roll_no = i;
+        cout << "Roll no is " << roll_no << endl;
+      }
+    
+      Student(Student &s) {
+        roll_no = s.roll_no;
+        cout << "Roll no is " << roll_no << endl;
+      }
+    };
+    
+    int main() {
+      Student s1(2);
+      Student s2(s1);
+    } 
+    `,
   },
   {
     topic: "Sort a set of strings in ascending alphabetical order",
