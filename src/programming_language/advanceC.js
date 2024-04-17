@@ -37,6 +37,7 @@ const advanceC = [
   {
     topic: "Constructor and Destructor",
     desc: `
+    <b>Constructor</b><br />
     Special menber function to initialize class object.<br />
     Name is same as of class name.<br />
     No return type.<br />
@@ -54,7 +55,15 @@ const advanceC = [
     It is a constructor that takes some arguments.<br /><br />
 
     <b>Copy Constructor</b><br />
-    It is a constructor that takes it's own class as a argument.<br /><br />
+    It is a constructor that takes it's own class as a argument.<br /><br /><br />
+
+    <b>Destructor</b><br />
+    Special member function which is called automatically when object is destroyed.<br />
+    Same name as class name with symbol<b>~</b>.<br />
+    No arguments.<br />
+    Can't be overloaded.<br />
+    Delete the memory space of objecttemplate<br />
+    No return type<br />
     `,
     code: `
     // Default Constructor
@@ -124,6 +133,148 @@ const advanceC = [
       Student s1(2);
       Student s2(s1);
     } 
+
+    // Destructor
+    #include <iostream>
+    using namespace std;
+
+    class Student {
+    public:
+      Student() { 
+        cout << "This is constructor"; 
+      }
+
+      void someFunction() { 
+        cout << "Hello world"; 
+      }
+
+      ~Student() { 
+        cout << "This is destructor"; 
+      }
+    };
+
+    int main() {
+      Student s;
+      s.someFunction();
+    }
+    `,
+  },
+  {
+    topic: "Friend Function",
+    desc: `
+    Scope is not inside the class in which it has been declared.<br />
+    Not called using object of class.<br />
+    Can access data members using object of class.<br />
+    Usually has object as argument.<br />
+    Can access private and protected class data.<br />
+    `,
+    code: `
+    #include <iostream>
+    using namespace std;
+
+    class Distance{
+      private:
+        int i;
+
+      public:
+        Distance(){
+          i = 0;
+        }
+
+        friend int addTwo(Distance);
+    };
+
+    int addTwo(Distance d){
+      d.i = d.i + 2;
+      return d.i;
+    }
+
+    int main(){
+      Distance dis;
+
+      cout << addTwo(dis);
+    }
+    `,
+  },
+  {
+    topic: "Friend Class",
+    desc: `
+    A class can also be made a friend on another class.<br />
+    When a class in made friend class all the member function of that class becomes
+    friend function.
+    `,
+    code: `
+    #include <iostream>
+    using namespace std;
+
+    class Box {
+    private:
+      int length;
+      int width;
+      int height;
+
+    public:
+      Box(int l, int w, int h) {
+        length = l;
+        width = w;
+        height = h;
+      }
+
+      friend class Printer;
+    };
+
+    class Printer {
+    public:
+      void printBoxDetails(Box &box) {
+        cout << "Length is " << box.length << endl;
+        cout << "Width is " << box.width << endl;
+        cout << "Height is " << box.height << endl;
+      }
+    };
+
+    int main() {
+      Box myBox(10, 5, 7);
+
+      Printer myPrinter;
+      myPrinter.printBoxDetails(myBox);
+
+      return 0;
+    }
+    `,
+  },
+  {
+    topic: "Static Data Members",
+    desc: `
+    Static member variable means only one copy of that variable will exist and all
+    the objects will share that variable.<br /> 
+    It is also called as class variable. <br />
+    Initialized to zero before first object is created. <br />
+    `,
+    code: `
+    #include <iostream>
+    using namespace std;
+
+    class Student {
+    public:
+      int count = 0;
+      static int count;
+
+      Student() { 
+        count = count + 1; 
+      }
+
+      static void display() { 
+        cout << count; 
+      }
+    };
+
+    int Student::count = 0;
+
+    int main() {
+      Student s1, s2;
+
+      Student::display();
+    }
     `,
   },
   {
@@ -242,7 +393,7 @@ const advanceC = [
     `,
   },
   {
-    topic: "C++ Program to Convert Decimal to Binary ,Octal, Hexadecimal",
+    topic: "C++ Program to Convert Decimal to Binary, Octal, Hexadecimal",
     desc: "",
     code: `
     #include <iostream>
@@ -333,7 +484,7 @@ const advanceC = [
     }`,
   },
   {
-    topic: "C++ Program to Convert Binary ,Octal, Hexadecimal to Decimal",
+    topic: "C++ Program to Convert Binary, Octal, Hexadecimal to Decimal",
     desc: "",
     code: `
     #include <iostream>
