@@ -22,7 +22,7 @@ const AdvanceC = () => {
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>{concept.desc}</AccordionPanel>
-              <AccordionPanel pb={4}>
+              <AccordionPanel pb={4} className='copy-block-override'>
                 <CopyBlock
                   text={concept.code}
                   language="c"
@@ -30,7 +30,7 @@ const AdvanceC = () => {
                   theme={dracula}
                   wrapLines={true}
                   CodeBlock
-                  className="kXsryT"
+                // className="copy-block-override"
                 />
               </AccordionPanel>
             </AccordionItem>
