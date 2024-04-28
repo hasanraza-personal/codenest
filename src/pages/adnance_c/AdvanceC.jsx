@@ -25,6 +25,11 @@ const AdvanceC = () => {
               <AccordionPanel pb={4}>
                 <span dangerouslySetInnerHTML={{ __html: concept.desc }} />
               </AccordionPanel>
+              {concept.image &&
+                <AccordionPanel pb={4}>
+                  {concept.image}
+                </AccordionPanel>
+              }
               <AccordionPanel pb={4} className='copy-block-override'>
                 <CopyBlock
                   text={concept.code}
